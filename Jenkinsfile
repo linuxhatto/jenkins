@@ -6,7 +6,10 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
+  
+    withCredentials([usernamePassword(credentialsId: 'e728f7c3-5b28-4125-ad82-75c8bd233f29' usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
   def tag = new Date().format("yyyyMMddHHmm")
-  sh "echo Build ${tag}"
+  sh "git tag -a ${tag} -m '${USER} tagging'"
+    }
  }
 
