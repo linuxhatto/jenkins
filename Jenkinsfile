@@ -6,7 +6,9 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  sh 'touch /tmp/build'
+  sh 'cd /var/www/html/dnsconsult'
+  sh 'git tag -a some_tag -m 'Jenkins''
+  sh 'it push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags'
  checkout scm
  }
 
