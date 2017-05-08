@@ -6,7 +6,6 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  sh 'git push origin master'
-  archiveArtifacts artifacts: '/var/www/html/dnsconsult', fingerprint: true
+  sh "git push origin master '+refs/remotes/origin/*:refs/heads/*'"
  }
 
