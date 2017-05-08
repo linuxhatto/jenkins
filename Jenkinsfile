@@ -6,9 +6,13 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  sh 'cd /var/www/html/dnsconsult'
-  sh 'git tag -a some_tag -m "Jenkins"'
-  sh 'git push origin master'
- checkout scm
+  
+  withCredentials([usernameColonPassword(credentialsId: 'mylogin', variable: 'USERPASS')]) {
+    sh '''
+      set +x
+      cd /var/www/html/dnsconsult
+      git tag -a some_tag -m "Jenkins"
+      git push origin master
+    }
  }
 
