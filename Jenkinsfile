@@ -6,6 +6,6 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  sh "git push origin master '+refs/remotes/origin/*:refs/heads/*'"
+  sh "git push origin master"
  }
 
