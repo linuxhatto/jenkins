@@ -6,7 +6,7 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  sh 'touch build'
+  sh 'touch /tmp/build'
  checkout scm
  }
 
