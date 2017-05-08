@@ -6,6 +6,7 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
+  archiveArtifacts '/tmp'
   sh 'touch build'
  checkout scm
  }
