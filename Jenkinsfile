@@ -6,13 +6,7 @@ stage 'Checkout'
 
 stage 'Build'
  node('master') {
-  
-  withCredentials([usernameColonPassword(credentialsId: 'mylogin', variable: 'USERPASS')]) {
-    sh '''
-      set +x
-      cd /var/www/html/dnsconsult
-      git tag -a some_tag -m "Jenkins"
-      git push origin master
-    }
+  sh 'git push origin master'
+  archiveArtifacts artifacts: '/var/www/html/dnsconsult', fingerprint: true
  }
 
