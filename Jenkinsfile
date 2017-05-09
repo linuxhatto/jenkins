@@ -7,8 +7,8 @@ stage 'Checkout'
 stage 'Build'
  node('master') {
   
-    withCredentials([usernamePassword(credentialsId: 'e728f7c3-5b28-4125-ad82-75c8bd233f29', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_ASKPASS')]) {
+    withCredentials([usernamePassword(credentialsId: 'e728f7c3-5b28-4125-ad82-75c8bd233f29', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
   def tag = new Date().format("yyyyMMddHHmm")
-     sh "cd /tmp/jenkins; git push https://linuxhatto@github.com/linuxhatto/jenkins.git"
+     sh "cd /tmp/jenkins; git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/linuxhatto/jenkins.git"
     }
  }
