@@ -11,6 +11,6 @@ stage 'Build'
   def tag = new Date().format("yyyyMMddHHmm")
   sh "cd /tmp/jenkins"
   sh("git tag -a ${tag} -m '${USER} tagging'")
-  sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/linuxhatto/jenkins.git --tags"
+  sh "git push origin teste https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/linuxhatto/jenkins.git --tags"
     }
  }
